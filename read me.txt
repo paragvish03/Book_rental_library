@@ -1,0 +1,17 @@
+initisalise all requirer packages and set up environment in directory
+make server using express and test it
+create models and change db name in configs.json and sync
+note
+ .create()  comes from whole models files
+express.json() should be app routing part
+
+routing part 
+if export = xyz   then import xyz
+if export = {xyz}   then import { xyz}
+
+
+prop
+finAll() and findAll({attribute:[attribute1,attribute2,....]})
+
+.destroy({where:{id:?}})  destroy({truncate:true}) //empty whole table
+.bulkCreate([{},{},{},...])   where {} = details with attributes in json form
