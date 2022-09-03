@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+
+  
+  background-size: cover;   
+   background-image: url('https://img.freepik.com/free-vector/library-interior-empty-room-reading-with-books-wooden-shelves_33099-1722.jpg?w=740&t=st=1662138738~exp=1662139338~hmac=edb10fabb414e7fcebf1336660eb0a184b214acb09e96883d521575426bb52d2');
+   
+        display: flex;
+        justify-content:center;
+    }
+
+    .details {
+        opacity: 1;
+        background-color: aliceblue;
+        border: 2px solid red;
+        width: 70wv;
+        height: 50vh;
+    }
+    .container{
+       
+      width: 30vw;
+    }
+    h4,h3{
+    margin-top: 0px
+
+;
+    margin-bottom: 0px;
+}
+</style>
+
+<body>
+    <div class="container">
+        <div class="details">
+        rented by user: 
+            <h2>
+               <%= result.name %>(Id: <%= result.id %>)
+            </h2>
+<h4>list: </h4>
+            <% if(showsrentedbooks) { %>
+
+               <hr> <% for(let i=0; i<showsrentedbooks.length; i++){ %>
+
+                  <h3>  <%= showsrentedbooks[i].dataValues.isbn%> <%= showsrentedbooks[i].dataValues.name%></h3> <hr>
+            
+
+                            <% } %>
+
+                                <% }else{ %>
+                                    <h2> no book is rented </h2>
+                                    <% } %>
+        </div>
+    </div>
+</body>
+
+</html>

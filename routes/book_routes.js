@@ -27,28 +27,29 @@ res.send(result)}catch(err){
 
 }})
 
-router.put('/rent/book', async(req,res)=>{
+router.post('/rent/book', async(req,res)=>{
   let isbn  = req.body.isbn
   let userid = req.body.userid
 
 await Books.update({RentedcheckId:1},{where:{isbn:isbn}})
 
 let result = await User.findOne({where:{id:userid}})
-
-
 let booksid = await Books.findOne({where:{isbn:isbn}})
+
 if(result){
     //rent book on user
     await result.addBooks(booksid)
+   // res.redirect('/')
+   res.send({'mssge':"book is rented now"})
    //  await booksid.setUser(result.id)
 } else{
     //errorthat user id is not valid
     res.send({message:"userid in invalid"})
 }
-res.send({'mssge':"book is rented now"})
+
 })
 
-router.put('/return/book', async(req,res)=>{
+router.post('/return/book', async(req,res)=>{
     let isbn  = req.body.isbn
     let userid = req.body.userid
   
@@ -70,12 +71,14 @@ router.put('/return/book', async(req,res)=>{
   
 
 
-router.get('/rent/bookbyuser/:userid', async(req,res)=>{
-let userid = req.params.userid
+router.get('/rent/bookbyuser', async(req,res)=>{
+let userid = req.query.userid
 let result = await User.findOne({where:{id:userid}})
 let showsrentedbooks = await result.getBooks()
-res.send(showsrentedbooks)
+console.log("><><><><>"+showsrentedbooks.dataValues)
 
+//res.send(showsrentedbooks)
+res.render('userdetails',{showsrentedbooks,result})
 })
 
 
@@ -87,7 +90,7 @@ router.get('/get/book', async(req,res)=>{
 
 let result = await Books.findAll({where:{RentedcheckId:null}})
 
-res.send(result)
+res.render('index',{userData:result})
 })
 
 module.exports = {

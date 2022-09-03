@@ -4,9 +4,14 @@ const {sequelize} = require('./models')
 const {bookRouter} = require('./routes/book_routes')
 
 app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 app.use(bookRouter)
+ 
+app.set('view engine','ejs')
+app.use(express.static('public'))
 
 app.get('/',(req,res)=>{
+//res.render('index')
 res.status(200).send({mssge:"open in home browser"})
 })
 

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+    <div class="left">
+        <div class="up">
+            <div class="table-data">
+                <h2>Available books in library </h2>
+                    <table border="2">
+                        <tr>
+                            <th>Isbn</th>
+                            <th>name</th>
+                            <th>Author</th>
+                            <th>publishedOn</th>
+                           
+                        </tr>
+                        
+                        <%
+                        if(userData.length!=0){
+                        var i=1;
+                        userData.forEach(function(result){
+                        %>
+                        <tr>
+                            <td><%=result.isbn; %></td>
+                            <td><%=result.name %></td>
+                            <td><%=result.Author %></td>
+                            <td><%=result.publisheOn %></td>
+                           
+                            
+                            <td style="background-color: rgba(11, 204, 11, 0.596);">Available</td>
+                        </tr>
+                        <%  i++; }) %>
+                        <% } else{ %>
+                            <tr>
+                                <td colspan="7"><h2>No books available</h2></td>
+                            </tr>
+                        <% } %>
+                    </table>
+                    </div>
+
+        </div>
+
+
+        <div class="down">
+<img src="https://us.123rf.com/450wm/lenm/lenm1707/lenm170700291/82064042-illustration-of-stickman-kids-talking-to-a-librarian-borrowing-books-in-the-library.jpg?ver=6" alt="" style="width: 100%;" >     
+
+<div class="form">
+
+<h3>Rent book</h3>
+<form class="form1" action="/rent/book" method="post">
+    <input type="text" name="isbn" placeholder="Isbn no.." required>
+    <input type="text" name="userid" placeholder="userid" required>
+    <button type="submit">_Rent_</button>
+
+</form>
+<h3>return book</h3>
+<form  class="form1" action="/return/book" method="post">
+    <input type="text" name="isbn" placeholder="Isbn no.." required>
+    <input type="text" name="userid" placeholder="userid" required>
+    <button type="submit">Return </button>
+
+</form>
+<h3>Check rented book by user</h3>
+<form  class="form1" action="/rent/bookbyuser" method="get">
+    <input type="text" name="userid" placeholder="userid" required>
+    <button type="submit">check </button>
+
+</form>
+
+
+</div>
+
+        </div>
+
+
+    </div>
+
+    <div class="right">
+
+       <!-- <div class="table-data">
+            <h2>All books in library </h2>
+                <table border="12">
+                    <tr>
+                        <th>Isbn</th>
+                        <th>name</th>
+                        <th>Author</th>
+                        <th>publishedOn</th>
+                       
+                    </tr>
+                    
+                    <%
+                    if(userData.length!=0){
+                    var i=1;
+                    userData.forEach(function(result){
+                    %>
+                    <tr>
+                        <td><%=result.isbn; %></td>
+                        <td><%=result.name %></td>
+                        <td><%=result.Author %></td>
+                        <td><%=result.publisheOn %></td>
+                       
+                        
+                        <td><a href="/users/delete/<%=result.id%>">Rent</a></td>
+                    </tr>
+                    <%  i++; }) %>
+                    <% } else{ %>
+                        <tr>
+                            <td colspan="7">No Data Found</td>
+                        </tr>
+                    <% } %>
+                </table>
+                </div> -->
+<h2>Karan user ID= 1</h2>
+<h2>manoj user ID= 2</h2>
+<h2>rahul user ID= 3</h1>
+    </div>
+</body>
+
+</html>
